@@ -19,6 +19,10 @@ public class Car extends Vehicle{
         MAX_SPEED = 200;
     }
 
+    public int getGEAR_LIMIT(){
+        return GEAR_LIMIT;
+    }
+
     public void increaseSpeed(double amount){
         if ((amount <= 0 && gear == -1) || (amount >= 0) && gear > 0)
         {
@@ -60,7 +64,8 @@ public class Car extends Vehicle{
             }
             else setSpeed(0);
         }
-        System.out.println("Recommended gear: " + Math.ceil((1 + getSpeed())/15));
+        System.out.println("Current speed: " + getSpeed() +
+                "  Recommended gear: " + Math.round(Math.ceil((1 + getSpeed())/15)));
     }
 
     public void handling()
@@ -88,7 +93,7 @@ public class Car extends Vehicle{
             {
                 this.gear = gear;
             }else System.out.println("Impossible to change gear. " +
-                    "Recommended gear: " + Math.ceil((1 + getSpeed())/15));
+                    "Recommended gear: " + Math.round(Math.ceil((1 + getSpeed())/15)));
         }else System.out.println("Such gear does not exist");
     }
     public int getGear()
